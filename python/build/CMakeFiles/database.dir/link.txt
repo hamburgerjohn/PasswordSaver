@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -flto -shared  -o database.cpython-310-x86_64-linux-gnu.so CMakeFiles/database.dir/pyImport.cpp.o  -lmysqlclient 
