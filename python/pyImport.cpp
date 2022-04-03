@@ -16,6 +16,7 @@ PYBIND11_MODULE(database, handle){
     .def("SetTable", &Database::SetTable)
     .def("CreateTable", &Database::CreateTable)
     .def("DropTable", &Database::DropTable)
+    .def("GetTable", &Database::GetTable)
     .def("GetPassword", &Database::GetPassword);
 
 }

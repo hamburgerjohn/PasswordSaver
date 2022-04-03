@@ -92,6 +92,8 @@ public:
         SetQuery(query);
     }
 
+    const char* GetTable(){return this->table;}
+
     void SetTable(const char* table){
         this->table = table;
     }

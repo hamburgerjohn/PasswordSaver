@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -Ddatabase_EXPORTS
 
-CXX_INCLUDES = -isystem /home/hamburgerjohn/dev/PasswordSavor/python/pybind11/include
+CXX_INCLUDES = -isystem /home/hamburgerjohn/dev/PasswordSaver/python/pybind11/include
 
 CXX_FLAGS = -fPIC -fvisibility=hidden -flto -fno-fat-lto-objects
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/hamburgerjohn/dev/PasswordSavor/python/pybind11
+# Install script for directory: /home/hamburgerjohn/dev/PasswordSaver/python/pybind11
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
