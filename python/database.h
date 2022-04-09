@@ -3,7 +3,9 @@
 #include <stdio.h>
 #include <mysql/mysql.h>
 
+
 class Database{
+
 
 #define BUFFER 255
 
@@ -11,8 +13,9 @@ private:
     MYSQL* con;
     MYSQL_ROW row;
     MYSQL_RES* res;
-    const char* server, *user, *pass, *database, *table = "erick";
+    const char* server, *user, *pass, *database;
     const char* sql_query;
+    std::string table = "erick";
 
 public:
     Database(const char* server, const char* user, const char* pass, const char* database)
@@ -68,7 +71,7 @@ public:
 
     void Insert(const char* domain, const char* username, const char* password){
         char query[BUFFER];
-        sprintf(query, "insert into %s(domain, username, password) values('%s','%s','%s');",this->table,domain, username, password);
+        sprintf(query, "insert into %s(domain, username, password) values('%s','%s','%s');",this->table.c_str(),domain, username, password);
         SetQuery(query);
     }
 
@@ -81,20 +84,20 @@ public:
     //remove more specifically
     void Remove(const char* domain, const char* username){
         char query[BUFFER];
-        sprintf(query, "delete from %s where domain = '%s' and username = '%s'", this->table, domain, username);
+        sprintf(query, "delete from %s where domain = '%s' and username = '%s'", this->table.c_str(), domain, username);
         SetQuery(query); 
     }
 
     //update password
     void Update(const char* domain, const char* username, const char* password){
         char query[BUFFER];
-        sprintf(query, "update %s set password = '%s' where domain = '%s' and username = '%s'",this->table, password, domain, username);
+        sprintf(query, "update %s set password = '%s' where domain = '%s' and username = '%s'",this->table.c_str(), password, domain, username);
         SetQuery(query);
     }
 
-    const char* GetTable(){return this->table;}
+    std::string& GetTable(){return this->table;}
 
-    void SetTable(const char* table){
+    void SetTable(std::string& table){
         this->table = table;
     }
 
@@ -113,7 +116,7 @@ public:
     const char* GetPassword(const char* domain, const char* username){
         char query[BUFFER];
         MYSQL_ROW row;
-        sprintf(query, "select password from erick where domain = '%s' and username = '%s'", domain, username);
+        sprintf(query, "select password from %s where domain = '%s' and username = '%s'", this->table.c_str(),domain, username);
         SetQuery(query);
 
         row = mysql_fetch_row(this->res);
