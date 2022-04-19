@@ -3,10 +3,10 @@ import random
 from tkinter import *
 from tkinter.tix import CheckList
 
-pass_length = 16
+pass_length = 24
 special_length = 4
 integer_length = 4
-special_chars = ""
+special_chars = "!@#$%^&*"
 
 def pass_construct() -> str:
     global pass_length, special_length, integer_length, special_chars
@@ -77,7 +77,7 @@ def pass_settings(root):
         pass_length = 8 if lt.get() == '' else int(lt.get())
         special_length = 0 if st.get() == '' else int(st.get())
         integer_length = 0 if it.get() == '' else int(it.get())
-        
+        special_chars = ""
         for k,v in checklist.items():
             if v.get():
                 special_chars += k
